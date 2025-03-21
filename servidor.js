@@ -25,7 +25,7 @@ app.post('/apresente-se', (request, response) => {
     }
 })
 
-app.delete('/reset', (request, response) => {
+app.post('/reset', (request, response) => {
     let total = request.body.total
     
     if (total == "verdadeiro") {
