@@ -3,7 +3,8 @@ const app = express()
 app.use(express.json());
 const port = process.env.PORT || 3000;
 
-let nomes = ['Abel', 'Analiz', 'Arthur', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Pedro', 'Juliana', 'Kamily', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Pilar', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Pedro', 'Raiane', 'Raquel', 'Rhaniery', 'Cesar', 'Cesinha', 'Geleia']
+//let nomesPdC2024 = ['Abel', 'Analiz', 'Arthur', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Pedro', 'Juliana', 'Kamily', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Pilar', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Pedro', 'Raiane', 'Raquel', 'Rhaniery', 'Cesar', 'Cesinha', 'Geleia']
+let nomes = ['Abel', 'Analiz', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Davi', 'Deyveson', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Mateus', 'João Pedro', 'João Victor', 'Juliana', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Paulo Arthur', 'Raquel', 'Rhaniery', 'Cesar', 'Geleia']
 
 app.get('/', (request, response) => {
     i = getRandomInt(0, nomes.length-1)
