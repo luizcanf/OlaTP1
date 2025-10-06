@@ -1,6 +1,8 @@
 const express = require('express')
+var cors = require('cors')
 const app = express()
 app.use(express.json());
+app.use(cors())
 const port = process.env.PORT || 3000;
 
 //let nomesPdC2024 = ['Abel', 'Analiz', 'Arthur', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Pedro', 'Juliana', 'Kamily', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Pilar', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Pedro', 'Raiane', 'Raquel', 'Rhaniery', 'Cesar', 'Cesinha', 'Geleia']
@@ -30,7 +32,7 @@ app.post('/reset', (request, response) => {
     let total = request.body.total
     
     if (total == "verdadeiro") {
-        nomes = ['Abel', 'Analiz', 'Arthur', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Pedro', 'Juliana', 'Kamily', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Pilar', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Pedro', 'Raiane', 'Raquel', 'Rhaniery', 'Cesar', 'Cesinha', 'Geleia']
+        nomes = ['Abel', 'Analiz', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Davi', 'Deyveson', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Mateus', 'João Pedro', 'João Victor', 'Juliana', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Paulo Arthur', 'Raquel', 'Rhaniery', 'Cesar', 'Geleia']
         response.send('Lista de nomes resetada para a lista inicial.')
     } else {
         let nome = request.body.nome
