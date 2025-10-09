@@ -17,7 +17,7 @@ app.get('/nomes', (request, response) => {
     response.send('Lista dos nomes: '+nomes)
 })
 
-app.post('/apresente-se', (request, response) => {
+app.post('/nomes', (request, response) => {
     let nome = request.body.nome
     
     if (nomes.includes(nome)) {
