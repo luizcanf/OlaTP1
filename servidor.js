@@ -28,6 +28,11 @@ app.post('/nomes', (request, response) => {
     }
 })
 
+app.get('/existe', (request, response) => {
+    const achei = nomes.includes(request.query.nome)
+    response.send(achei)
+})
+
 app.post('/reset', (request, response) => {
     let total = request.body.total
     
