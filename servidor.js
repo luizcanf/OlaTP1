@@ -1,6 +1,7 @@
 const express = require('express')
 var cors = require('cors')
 const app = express()
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors())
 const port = process.env.PORT || 3000;
@@ -15,6 +16,10 @@ app.get('/', (request, response) => {
 
 app.get('/nomes', (request, response) => {
     response.send('Lista dos nomes: '+nomes)
+})
+
+app.get('/teste', (req, res) => {
+    res.send('<form action="/nomes" method="post">   <input type="text" name="nome" id="nome">   <input type="submit" value="Salvar">   </form>')
 })
 
 app.post('/nomes', (request, response) => {
