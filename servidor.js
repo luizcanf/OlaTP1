@@ -4,7 +4,6 @@ const app = express()
 app.use(cors())
 app.options('*', cors())
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 const port = process.env.PORT || 3000;
 
 //let nomesPdC2024 = ['Abel', 'Analiz', 'Arthur', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Pedro', 'Juliana', 'Kamily', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Pilar', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Pedro', 'Raiane', 'Raquel', 'Rhaniery', 'Cesar', 'Cesinha', 'Geleia']
@@ -37,6 +36,19 @@ app.post('/nomes', (request, response) => {
 app.get('/existe', (request, response) => {
     const achei = nomes.includes(request.query.nome)
     response.send(achei)
+})
+
+app.use(express.json());
+
+app.post('/apresente-se', (request, response) => {
+    let nome = request.body.nome
+    
+    if (nomes.includes(nome)) {
+        response.send('Olá, '+nome+'! Seu nome já estava na lista.')
+    } else {
+        nomes.push(nome)
+        response.send('Olá, '+nome+'! Acabei de incluir seu nome na lista.')
+    }
 })
 
 app.post('/reset', (request, response) => {
