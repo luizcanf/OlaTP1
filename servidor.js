@@ -15,25 +15,19 @@ app.get('/nomes', (request, response) => {
     response.send('Lista dos nomes: '+nomes)
 })
 
-app.get('/teste', (req, res) => {
-    res.send('<form action="/nomes" method="post">   <input type="text" name="nome" id="nome">   <input type="submit" value="Salvar">   </form>')
-})
-
 app.get('/existe', (request, response) => {
     const achei = nomes.includes(request.query.nome)
     response.send(achei)
 })
 
 app.post('/apresente-se', (request, response) => {
-    console.log("Olá, galera do Portugol!")
-    console.log("BODY: " + request.body)
     let nome = request.body.nome
     
     if (nomes.includes(nome)) {
-        response.send('Olá, '+nome+'! Seu nome já estava na lista.')
+        response.send('Oi, '+nome+'! Seu nome estava na lista.')
     } else {
         nomes.push(nome)
-        response.send('Olá, '+nome+'! Acabei de incluir seu nome na lista.')
+        response.send('Oi, '+nome+'! Acabei de incluir seu nome na lista.')
     }
 })
 
@@ -48,23 +42,17 @@ app.post('/reset', (request, response) => {
         const index = nomes.indexOf(nome)
         if (index > -1) {
             nomes.splice(index, 1)
-            response.send('Nome "'+nome+'" removido da lista.')
+            response.send('Nome "'+nome+'" removido da lista com sucesso.')
         } else {
-            response.send('Nome "'+nome+'" não encontrado na lista.')
+            response.send('Nome "'+nome+'" previamente ausente na lista.')
         }
     }
 })
 
-//var cors = require('cors')
-//app.use(cors())
-//app.options('*', cors())
+// Pra funcionar com requisições HTMX de fora do domínio precisa fazer essa gambiarra de tratar o body como text/plain
 
 app.use(express.text())
 app.post('/nomes', (request, response) => {
-    console.log("HEADERS")
-    console.log(request.headers)
-    console.log("BODY")
-    console.log(request.body)
     const params = new URLSearchParams(request.body)
     const nome = params.get('nome')
     
@@ -75,6 +63,11 @@ app.post('/nomes', (request, response) => {
         response.send('Olá, '+nome+'! Acabei de incluir seu nome na lista.')
     }
 })
+
+app.get('/teste', (req, res) => {
+    res.send('<form action="/nomes" method="post">   <input type="text" name="nome" id="nome">   <input type="submit" value="Salvar">   </form>')
+})
+
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
