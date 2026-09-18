@@ -8,7 +8,7 @@ app.use(cors())
 app.options('*', cors())
 
 //let nomesPdC2024 = ['Abel', 'Analiz', 'Arthur', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Pedro', 'Juliana', 'Kamily', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Pilar', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Pedro', 'Raiane', 'Raquel', 'Rhaniery', 'Cesar', 'Cesinha', 'Geleia']
-let nomes = ['Abel', 'Analiz', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Davi', 'Deyveson', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Mateus', 'João Pedro', 'João Victor', 'Juliana', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Paulo Arthur', 'Raquel', 'Rhaniery', 'Cesar', 'Geleia']
+let nomes = ['Ana Clara', 'Anny', 'Arthur', 'Bruno', 'Davi', 'Davi', 'Davi', 'Eloisa', 'Erick', 'Gabriel', 'Gabriel', 'Gabriel', 'Henri', 'Irwing', 'João Victor', 'Julia', 'Karollayne', 'Kathelyn', 'Leonn', 'Lucas',  'Lucas', 'Lucas', 'Luiz Fellipe', 'Maite', 'Marcos', 'Mariana', 'Mateus', 'Maysa', 'Milena', 'Thayla', 'Cesar', 'Cesinha', 'Geleia']
 
 app.get('/', (request, response) => {
     i = getRandomInt(0, nomes.length-1)
@@ -39,7 +39,7 @@ app.post('/reset', (request, response) => {
     let total = request.body.total
     
     if (total == "verdadeiro") {
-        nomes = ['Abel', 'Analiz', 'Arthur', 'Cassiano', 'Daniel', 'Davi', 'Davi', 'Davi', 'Deyveson', 'Edgar', 'Elisa', 'Eloá', 'Esmeralda', 'Giovana', 'Hadassa', 'Hillary', 'João Marcos', 'João Mateus', 'João Pedro', 'João Victor', 'Juliana', 'Kayky', 'Lailla', 'Leonardo', 'Lorenna', 'Mariana', 'Matheus', 'Miguel', 'Matheus', 'Miguel', 'Paulo Arthur', 'Raquel', 'Rhaniery', 'Cesar', 'Geleia']
+        nomes = ['Ana Clara', 'Anny', 'Arthur', 'Bruno', 'Davi', 'Davi', 'Davi', 'Eloisa', 'Erick', 'Gabriel', 'Gabriel', 'Gabriel', 'Henri', 'Irwing', 'João Victor', 'Julia', 'Karollayne', 'Kathelyn', 'Leonn', 'Lucas',  'Lucas', 'Lucas', 'Luiz Fellipe', 'Maite', 'Marcos', 'Mariana', 'Mateus', 'Maysa', 'Milena', 'Thayla', 'Cesar', 'Cesinha', 'Geleia']
         response.send('Lista de nomes resetada para a lista inicial.')
     } else {
         let nome = request.body.nome
@@ -68,8 +68,12 @@ app.post('/nomes', (request, response) => {
     }
 })
 
-app.get('/teste', (req, res) => {
-    res.send('<form action="/nomes" method="post">   <input type="text" name="nome" id="nome">   <input type="submit" value="Salvar">   </form>')
+app.get('/teste-html', (req, res) => {
+    res.send('<form action="/apresente-se" method="post">   <input type="text" name="nome" id="nome">   <input type="submit" value="Salvar">   </form>')
+})
+
+app.get('/teste-htmx', (req, res) => {
+    res.send('<form hx-post="/nomes" hx-target="#resultado">  <input type="text" name="nome" id="nome">  <button type="submit">Salvar</button>  </form>  <div id="resultado"></div>')
 })
 
 
